@@ -18,7 +18,9 @@ class Conexao {
         onCreate: (db, v) {
           // criando os elementos (tabelas e registros) do BD
           db.execute(criarManga);
+          db.execute(criarCategoria);
           insercoesManga.forEach(db.execute);
+          insercoesCategoria.forEach(db.execute);
         },
       );
       _fechado = false;

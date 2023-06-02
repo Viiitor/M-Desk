@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mdesk/view/TelaTeste.dart';
 
-import 'manga_lista.dart';
 
 class TelaInicial extends StatelessWidget {
   const TelaInicial({Key? key}) : super(key: key);

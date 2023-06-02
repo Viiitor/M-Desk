@@ -1,17 +1,13 @@
 class Categoria {
-  final dynamic id;
+  final int id;
   final String nome;
 
-  Categoria({
-    this.id,
-    required this.nome,
-  });
+  Categoria({required this.id, required this.nome});
 
-  @override
-  String toString() {
-    return '''
-      $id
-      $nome 
-    ''';
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'nome': nome,
+    };
   }
 }

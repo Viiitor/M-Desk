@@ -6,7 +6,7 @@ import 'package:mdesk/view/widget/botao.dart';
 import 'package:mdesk/view/widget/campo_descricao.dart';
 import 'package:mdesk/view/widget/campo_nome.dart';
 import 'package:mdesk/view/widget/campo_url.dart';
-import 'package:mdesk/view/dto/categoria.dart';
+import 'package:mdesk/view/widget/dropdowm_buttom.dart';
 
 class MangaForm extends StatefulWidget {
   MangaForm({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class MangaForm extends StatefulWidget {
 class _MangaFormState extends State<MangaForm> {
   final formKey = GlobalKey<FormState>();
   dynamic id;
-  
+  final dropdownValue = ValueNotifier('');
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +32,10 @@ class _MangaFormState extends State<MangaForm> {
             campoNome,
             campoDescricao,
             campoURL,
+            CustomDropdownButton(
+              valueNotifier: dropdownValue,
+            ),
+            criarBotao(context),
           ],
         ),
       ),
@@ -41,7 +45,6 @@ class _MangaFormState extends State<MangaForm> {
   final campoNome = CampoNome(controle: TextEditingController());
   final campoDescricao = CampoDescricao(controle: TextEditingController());
   final campoURL = CampoURL(controle: TextEditingController());
-  Categoria? categoriaSelecionada;
 
   Widget criarBotao(BuildContext context) {
     return Botao(
@@ -73,6 +76,7 @@ class _MangaFormState extends State<MangaForm> {
       nome: campoNome.controle.text,
       descricao: campoDescricao.controle.text,
       urlAvatar: campoURL.controle.text,
+      categoria: dropdownValue.value,
     );
   }
 
@@ -80,6 +84,6 @@ class _MangaFormState extends State<MangaForm> {
     campoNome.controle.text = manga.nome;
     campoDescricao.controle.text = manga.descricao;
     campoURL.controle.text = manga.urlAvatar;
+    dropdownValue.value = manga.categoria;
   }
-
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mdesk/Rota.dart';
 import 'package:mdesk/view/TelaTeste.dart';
+import 'package:mdesk/view/categoria_form.dart';
+import 'package:mdesk/view/categoria_lista.dart';
 import 'package:mdesk/view/manga_detalhe.dart';
 import 'package:mdesk/view/manga_form.dart';
 import 'package:mdesk/view/manga_lista.dart';
@@ -17,6 +19,8 @@ class App extends StatelessWidget {
       Rota.mangaForm: (context) => MangaForm(),
       Rota.mangaDetalhe: (context) => MangaDetalhe(),
       Rota.TelaTeste: (context) => TelaTeste(),
+      Rota.categoriaLista: (context) => CategoriaLista(),
+      Rota.categoriaForm:(context) => CategoriaForm(),
     });
   }
 }
