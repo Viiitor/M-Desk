@@ -19,7 +19,7 @@ class CampoNome extends StatelessWidget{
       },
       decoration: const InputDecoration(
         label: Text('Nome:'),
-        hintText: 'Informe o nome do seu Manga'
+        hintText: 'Informe '
       ),
     );
   }

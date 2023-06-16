@@ -4,30 +4,30 @@ import 'package:mdesk/view/interface/categoria_inteface_dao.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 class CategoriaDAOSQLite implements CategoriaInterfaceDAO {
+
+
   @override
   Future<Categoria> consultar(int id) async {
     Database db = await Conexao.criar();
-    List<Map<String, dynamic>> maps =
+    List<Map> maps =
         await db.query('Categoria', where: 'id = ?', whereArgs: [id]);
-    if (maps.isEmpty) {
+    if (maps.isEmpty)
       throw Exception('Não foi encontrado registro com este id');
-    }
-    Map<String, dynamic> resultado = maps.first;
+    Map<dynamic, dynamic> resultado = maps.first;
     return converterCategoria(resultado);
-  }
+
+    }
 
   @override
   Future<List<Categoria>> consultarTodos() async {
     Database db = await Conexao.criar();
-    List<Map<String, dynamic>> maps = await db.query('categoria');
-    List<Categoria> lista = maps
-        .map<Categoria>((resultado) => converterCategoria(resultado))
-        .toList();
-    return lista;
+    List<Categoria> lista = 
+        (await db.query('categoria')).map<Categoria>(converterCategoria).toList();
+  return lista;
   }
 
   @override
-  Future<bool> excluir(int id) async {
+  Future<bool> excluir(id) async {
     Database db = await Conexao.criar();
     var sql = 'DELETE FROM categoria WHERE id = ?';
     int linhasAfetadas = await db.rawDelete(sql, [id]);
@@ -52,7 +52,7 @@ class CategoriaDAOSQLite implements CategoriaInterfaceDAO {
     return categoria;
   }
 
-  Categoria converterCategoria(Map<String, dynamic> resultado) {
+  Categoria converterCategoria(Map<dynamic, dynamic> resultado) {
     return Categoria(
       id: resultado['id'],
       nome: resultado['nome'],

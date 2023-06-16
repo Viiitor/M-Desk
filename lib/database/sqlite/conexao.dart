@@ -10,7 +10,7 @@ class Conexao {
     if (_fechado) {
       String path = join(await getDatabasesPath(),
           'banco.db'); //definindo o camminho do database
-      //deleteDatabase(path);                                    //caso queira apagar tudo antes, descomente esta linha
+      deleteDatabase(path);                                    //caso queira apagar tudo antes, descomente esta linha
       _database = await openDatabase(
         //chamando o método que que abre o database
         path, // informando o caminho
