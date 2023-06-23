@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mdesk/view/dto/manga.dart';
-import 'package:mdesk/view/widget/dropdowm_buttom.dart';
+import 'package:mdesk/view/widget/campo_opcoes_categoria.dart';
 import 'package:mdesk/view/widget/foto_manga.dart';
 
 class MangaDetalhe extends StatelessWidget {
@@ -15,12 +15,12 @@ class MangaDetalhe extends StatelessWidget {
         children: [
           FotoManga(
             manga: manga,
-            altura: 150,
-            largura: 80,
+            altura: 100,
+            largura: 100,
           ),
           nome(manga),
           descricao(manga),
-          CustomDropdownButton(),
+          CampoOpcoesCategoria()
         ],
       ),
       floatingActionButton: botaoVoltar(context),

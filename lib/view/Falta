@@ -1,0 +1,30 @@
+Associação
+autor /feito
+autor_interface   /feito
+autor_dao_sqlite
+autor_form  
+autor_lista
+atualizar Script
+
+precisa de +1 '????'
+///////////////////////////////////////////////////////////////////
+
+Dropdownbutton 
+fazer ficar salvo a categoria dentro dos detalhes do manga
+fazer o autor ser dentro de detalhes e fazer a Associação com categoria(se der para colocar varias)
+
+
+///////////////////////////////////// ou ////////////////////////////////////
+
+fazer categoria e autor por associação 
+
+
+
+///////////////////////////////////////////////////////////
+
+
+trocar o banco para firebase  OU  adicionar sistema de avaliação com estrelas nos mangas
+
+
+
+https://github.com/heliokamakawa/flutter_curso_agenda_2024/blob/main/lib/view/cidade_form.dart
