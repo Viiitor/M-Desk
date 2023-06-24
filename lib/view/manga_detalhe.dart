@@ -20,7 +20,6 @@ class MangaDetalhe extends StatelessWidget {
           ),
           nome(manga),
           descricao(manga),
-          CampoOpcoesCategoria()
         ],
       ),
       floatingActionButton: botaoVoltar(context),

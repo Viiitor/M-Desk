@@ -21,7 +21,6 @@ class _MangaListaState extends State<MangaLista> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Lista Mangas')),
       body: criarLista(context),
       floatingActionButton: BotaoAdicionar(acao: () => Navigator.pushNamed(context, Rota.mangaForm).then((value) => buscarMangas())),
       bottomNavigationBar: const BarraNavegacao(),

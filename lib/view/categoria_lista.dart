@@ -20,7 +20,6 @@ class _CategoriaListaState extends State<CategoriaLista> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Lista Categorias')),
       body: criarLista(context),
       floatingActionButton: BotaoAdicionar(acao: () => Navigator.pushNamed(context, Rota.categoriaForm).then((value) => buscarCategorias())),
       bottomNavigationBar: const BarraNavegacao(),

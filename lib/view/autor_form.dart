@@ -23,7 +23,7 @@ class _AutorFormState extends State<AutorForm> {
   Widget build(BuildContext context) {
     receberDadosParaAlteracao(context);
     return Scaffold(
-        appBar: AppBar(title: const Text('Cadastro')),
+        appBar: AppBar(title: const Text('Autor')),
         body: Form(
             key: formKey,
             child: Column(

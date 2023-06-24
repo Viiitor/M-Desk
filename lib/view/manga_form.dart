@@ -5,6 +5,8 @@ import 'package:mdesk/view/interface/manga_interface_dao.dart';
 import 'package:mdesk/view/widget/botao.dart';
 import 'package:mdesk/view/widget/campo_descricao.dart';
 import 'package:mdesk/view/widget/campo_nome.dart';
+import 'package:mdesk/view/widget/campo_opcoes_autor.dart';
+import 'package:mdesk/view/widget/campo_opcoes_categoria.dart';
 import 'package:mdesk/view/widget/campo_url.dart';
 
 class MangaForm extends StatefulWidget {
@@ -17,7 +19,6 @@ class MangaForm extends StatefulWidget {
 class _MangaFormState extends State<MangaForm> {
   final formKey = GlobalKey<FormState>();
   dynamic id;
-  final dropdownValue = ValueNotifier('');
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +32,9 @@ class _MangaFormState extends State<MangaForm> {
             campoNome,
             campoDescricao,
             campoURL,
-           // CustomDropdownButton(
-              //valueNotifier: dropdownValue,
-           // ),
+            campoCategoria,
+            campoAutor,
+
             criarBotao(context),
           ],
         ),
@@ -44,6 +45,8 @@ class _MangaFormState extends State<MangaForm> {
   final campoNome = CampoNome(controle: TextEditingController());
   final campoDescricao = CampoDescricao(controle: TextEditingController());
   final campoURL = CampoURL(controle: TextEditingController());
+  final campoCategoria = CampoOpcoesCategoria();
+  final campoAutor = CampoOpcoesAutor();
 
   Widget criarBotao(BuildContext context) {
     return Botao(
@@ -75,7 +78,8 @@ class _MangaFormState extends State<MangaForm> {
       nome: campoNome.controle.text,
       descricao: campoDescricao.controle.text,
       urlAvatar: campoURL.controle.text,
-      //categoria: dropdownValue.value,
+      categoria: campoCategoria.opcaoSelecionado!,
+      autor:     campoAutor.opcaoSelecionado!,
     );
   }
 
@@ -83,6 +87,7 @@ class _MangaFormState extends State<MangaForm> {
     campoNome.controle.text = manga.nome;
     campoDescricao.controle.text = manga.descricao;
     campoURL.controle.text = manga.urlAvatar;
-    //dropdownValue.value = manga.categoria;
+    campoCategoria.opcaoSelecionado = manga.categoria;
+    campoAutor.opcaoSelecionado = manga.autor;
   }
 }

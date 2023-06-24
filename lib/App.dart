@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mdesk/Rota.dart';
-import 'package:mdesk/view/TelaTeste.dart';
+import 'package:mdesk/view/autor_form.dart';
+import 'package:mdesk/view/autor_lista.dart';
 import 'package:mdesk/view/categoria_form.dart';
 import 'package:mdesk/view/categoria_lista.dart';
+import 'package:mdesk/view/home.dart';
 import 'package:mdesk/view/manga_detalhe.dart';
 import 'package:mdesk/view/manga_form.dart';
 import 'package:mdesk/view/manga_lista.dart';
@@ -14,13 +16,16 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(title: 'MDesk', routes: {
-      Rota.TelaInicial: (context) => TelaInicial(),
-      Rota.mangaLista: (context) => MangaLista(),
-      Rota.mangaForm: (context) => MangaForm(),
-      Rota.mangaDetalhe: (context) => MangaDetalhe(),
-      Rota.TelaTeste: (context) => TelaTeste(),
-      Rota.categoriaLista: (context) => CategoriaLista(),
-      Rota.categoriaForm:(context) => CategoriaForm(),
+      Rota.TelaInicial:      (context) => const TelaInicial(),
+      Rota.home:             (context) => const Home(),
+      Rota.mangaLista:       (context) => const MangaLista(),
+      Rota.mangaForm:        (context) =>       MangaForm(),
+      Rota.mangaDetalhe:     (context) => const MangaDetalhe(),
+      Rota.categoriaLista:   (context) => const CategoriaLista(),
+      Rota.categoriaForm:    (context) =>       CategoriaForm(),
+      Rota.autorLista:       (context) => const AutorLista(),
+      Rota.autorForm:        (context) => const AutorForm(),
+      
     });
   }
 }

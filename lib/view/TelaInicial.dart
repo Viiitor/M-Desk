@@ -50,15 +50,9 @@ class TelaInicial extends StatelessWidget {
                           children: [
                             ElevatedButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, 'manga_Lista');
+                                Navigator.pushNamed(context, 'home');
                               },
                               child: Text('Login'),
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, 'categoria_Lista');
-                              },
-                              child: Text('Teste'),
                             ),
                           ],
                         ),

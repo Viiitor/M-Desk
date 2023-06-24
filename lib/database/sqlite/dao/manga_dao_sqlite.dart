@@ -1,4 +1,8 @@
 import 'package:mdesk/database/sqlite/conexao.dart';
+import 'package:mdesk/database/sqlite/dao/autor_dao_sqlite.dart';
+import 'package:mdesk/database/sqlite/dao/categoria_dao_sqlite.dart';
+import 'package:mdesk/view/dto/autor.dart';
+import 'package:mdesk/view/dto/categoria.dart';
 import 'package:mdesk/view/dto/manga.dart';
 import 'package:mdesk/view/interface/manga_interface_dao.dart';
 import 'package:sqflite/sqlite_api.dart';
@@ -40,32 +44,44 @@ class MangaDAOSQLite implements MangaInterfaceDAO {
     String sql;
     if (manga.id == null) {
       sql =
-          'INSERT INTO manga (nome, descricao, url_avatar) VALUES (?,?,?)';
+          'INSERT INTO manga (nome, descricao, url_avatar, categoria_id, autor_id) VALUES (?,?,?,?,?)';
       int id = await db.rawInsert(sql,
           [manga.nome, manga.descricao, manga.urlAvatar]);
       manga = Manga(
           id: id,
           nome: manga.nome,
           descricao: manga.descricao,
-          urlAvatar: manga.urlAvatar);
+          urlAvatar: manga.urlAvatar,
+          categoria: manga.categoria,
+          autor:     manga.autor,
+          );
     } else {
       sql =
-          'UPDATE manga SET nome = ?, descricao =?, url_avatar= ? WHERE id = ?';
+          'UPDATE manga SET nome = ?, descricao =?, url_avatar= ?, categoria_id= ?, autor_id=? WHERE id = ?';
       db.rawUpdate(sql, [
         manga.nome,
         manga.descricao,
         manga.urlAvatar,
-        manga.id
+        manga.id,
+        manga.categoria.id,
+        manga.autor.id,
       ]);
     }
     return manga;
   }
 
-    Manga converterManga(Map<dynamic, dynamic> resultado) {
+    Future<Manga> converterManga(Map<dynamic, dynamic> resultado) async {
+      Categoria categoria = await CategoriaDAOSQLite().consultar(resultado['categoria_id']);
+      Autor autor = await AutorDAOSQLite().consultar(resultado['autor_id']);
+
     return Manga(
         id: resultado['id'],
         nome: resultado['nome'],
         descricao: resultado['descricao'],
-        urlAvatar: resultado['url_avatar']);
+        urlAvatar: resultado['url_avatar'],
+        categoria: categoria,
+        autor: autor,
+
+        );
   }
 }
