@@ -13,21 +13,26 @@ class MangaDAOSQLite implements MangaInterfaceDAO {
     @override
   Future<Manga> consultar(int id) async {
     Database db = await Conexao.criar();
-    List<Map> maps =
-        await db.query('Manga', where: 'id = ?', whereArgs: [id]);
-    if (maps.isEmpty)
+    Map resultado =
+        (await db.query('Manga', where: 'id = ?', whereArgs: [id])).first;
+    if (resultado.isEmpty)
       throw Exception('Não foi encontrado registro com este id');
-    Map<dynamic, dynamic> resultado = maps.first;
     return converterManga(resultado);
   }
 
     @override
   Future<List<Manga>> consultarTodos() async {
     Database db = await Conexao.criar();
-    List<Manga> lista =
-        (await db.query('manga')).map<Manga>(converterManga).toList();
+    List<Map<dynamic, dynamic>> resultadoBD = await db.query('manga');
+    List<Manga> lista = [];
+    for (var registro in resultadoBD){
+      var manga = await converterManga(registro);
+      lista.add(manga);
+    }
     return lista;
   }
+
+
 
   @override
   Future<bool> excluir(id) async {
@@ -43,10 +48,8 @@ class MangaDAOSQLite implements MangaInterfaceDAO {
     Database db = await Conexao.criar();
     String sql;
     if (manga.id == null) {
-      sql =
-          'INSERT INTO manga (nome, descricao, url_avatar, categoria_id, autor_id) VALUES (?,?,?,?,?)';
-      int id = await db.rawInsert(sql,
-          [manga.nome, manga.descricao, manga.urlAvatar]);
+      sql = 'INSERT INTO manga (nome, descricao, url_avatar, categoria_id, autor_id) VALUES (?,?,?,?,?)';
+      int id = await db.rawInsert(sql, [manga.nome, manga.descricao, manga.urlAvatar]);
       manga = Manga(
           id: id,
           nome: manga.nome,
@@ -57,15 +60,8 @@ class MangaDAOSQLite implements MangaInterfaceDAO {
           );
     } else {
       sql =
-          'UPDATE manga SET nome = ?, descricao =?, url_avatar= ?, categoria_id= ?, autor_id=? WHERE id = ?';
-      db.rawUpdate(sql, [
-        manga.nome,
-        manga.descricao,
-        manga.urlAvatar,
-        manga.id,
-        manga.categoria.id,
-        manga.autor.id,
-      ]);
+          'UPDATE manga SET nome = ?, descricao =?, url_avatar = ?, categoria_id = ?, autor_id = ? WHERE id = ?';
+      db.rawUpdate(sql, [manga.nome, manga.descricao, manga.urlAvatar, manga.id, manga.categoria.id, manga.autor.id]);
     }
     return manga;
   }

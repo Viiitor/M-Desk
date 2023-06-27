@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mdesk/view/dto/manga.dart';
-import 'package:mdesk/view/widget/campo_opcoes_categoria.dart';
 import 'package:mdesk/view/widget/foto_manga.dart';
 
 class MangaDetalhe extends StatelessWidget {

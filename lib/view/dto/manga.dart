@@ -18,7 +18,7 @@ class Manga{
     required this.autor,
   });
 
-   @override
+  @override
   bool operator ==(other) =>
       other is Manga && other.nome == nome && other.id == id;
 

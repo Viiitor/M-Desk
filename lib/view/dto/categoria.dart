@@ -3,17 +3,17 @@ class Categoria {
   final String nome;
 
   Categoria({
-   this.id,
-   required this.nome
+  this.id,
+  required this.nome
   });
 
 
-   @override
+  @override
   String toString() {
-     return '''
-     $id
-     $nome
-     ''';
+    return '''
+    $id
+    $nome
+    ''';
   }
 
 }

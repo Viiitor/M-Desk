@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mdesk/database/sqlite/dao/autor_dao_sqlite.dart';
 import 'package:mdesk/view/dto/autor.dart';
 
+// ignore: must_be_immutable
 class CampoOpcoesAutor extends StatefulWidget {
   Autor? opcaoSelecionado;
   CampoOpcoesAutor({Key? key}) : super(key: key);

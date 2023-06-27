@@ -9,11 +9,10 @@ class CategoriaDAOSQLite implements CategoriaInterfaceDAO {
   @override
   Future<Categoria> consultar(int id) async {
     Database db = await Conexao.criar();
-    List<Map> maps =
-        await db.query('Categoria', where: 'id = ?', whereArgs: [id]);
-    if (maps.isEmpty)
+    Map resultado =
+        (await db.query('Categoria', where: 'id = ?', whereArgs: [id])).first;
+    if (resultado.isEmpty)
       throw Exception('Não foi encontrado registro com este id');
-    Map<dynamic, dynamic> resultado = maps.first;
     return converterCategoria(resultado);
 
     }
@@ -21,8 +20,12 @@ class CategoriaDAOSQLite implements CategoriaInterfaceDAO {
   @override
   Future<List<Categoria>> consultarTodos() async {
     Database db = await Conexao.criar();
-    List<Categoria> lista = 
-        (await db.query('categoria')).map<Categoria>(converterCategoria).toList();
+    List<Map<dynamic, dynamic>> resultadoBD = await db.query('categoria');
+    List<Categoria> lista = [];
+    for (var registro in resultadoBD) {
+      var categoria = await converterCategoria(registro);
+      lista.add(categoria);
+    }
   return lista;
   }
 

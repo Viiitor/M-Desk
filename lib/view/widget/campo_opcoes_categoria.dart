@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mdesk/database/sqlite/dao/categoria_dao_sqlite.dart';
 import 'package:mdesk/view/dto/categoria.dart';
 
+
+// ignore: must_be_immutable
 class CampoOpcoesCategoria extends StatefulWidget {
   Categoria? opcaoSelecionado;
   CampoOpcoesCategoria({Key? key}) : super(key: key);

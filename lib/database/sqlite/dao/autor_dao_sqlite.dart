@@ -7,20 +7,22 @@ class AutorDAOSQLite implements AutorInterfaceDAO {
   @override
   Future<Autor> consultar(int id) async {
     Database db = await Conexao.criar();
-    List<Map> maps =
-        await db.query('Autor', where: 'id = ?', whereArgs: [id]);
-    if (maps.isEmpty)
+    Map resultado =
+        (await db.query('Autor', where: 'id = ?', whereArgs: [id])).first;
+    if (resultado.isEmpty)
       throw Exception('Não foi encontrado registro com este id');
-    Map<dynamic, dynamic> resultado = maps.first;
     return converterAutor(resultado);
   }
 
   @override
   Future<List<Autor>> consultarTodos() async {
     Database db = await Conexao.criar();
-    List<Autor> lista = (await db.query('autor'))
-        .map<Autor>(converterAutor)
-        .toList();
+    List<Map<dynamic, dynamic>> resultadoBD = await db.query('autor');
+    List<Autor> lista = [];
+    for (var registro in resultadoBD) {
+      var categoria = await converterAutor(registro);
+      lista.add(categoria);
+    }
     return lista;
   }
 

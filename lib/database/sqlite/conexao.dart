@@ -19,7 +19,6 @@ class Conexao {
           // criando os elementos (tabelas e registros) do BD
           criarTabelas.forEach(db.execute);
           insercoes.forEach(db.execute);
-         
         },
       );
       _fechado = false;
