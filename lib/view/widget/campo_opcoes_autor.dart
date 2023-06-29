@@ -35,8 +35,8 @@ class _CampoOpcoesAutorState extends State<CampoOpcoesAutor> {
           if (!resultado.hasData) return const CircularProgressIndicator();
           if (resultado.data == null)
             return const Text('Faça o cadastro do autor primeiro.');
-          List<Autor> autors = resultado.data!;
-          List<DropdownMenuItem<Autor>> itensAutor = autors
+          List<Autor> autor = resultado.data!;
+          List<DropdownMenuItem<Autor>> itensAutor = autor
               .map((autor) => DropdownMenuItem(
                   value: autor, child: Text(autor.nome)))
               .toList();

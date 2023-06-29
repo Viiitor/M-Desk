@@ -49,5 +49,6 @@ class _CampoOpcoesCategoriaState extends State<CampoOpcoesCategoria> {
                 if (categoriaEscolhida != null) associarCategoria(categoriaEscolhida);
               });
         });
+
   }
 }

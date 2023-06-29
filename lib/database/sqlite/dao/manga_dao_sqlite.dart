@@ -49,7 +49,7 @@ class MangaDAOSQLite implements MangaInterfaceDAO {
     String sql;
     if (manga.id == null) {
       sql = 'INSERT INTO manga (nome, descricao, url_avatar, categoria_id, autor_id) VALUES (?,?,?,?,?)';
-      int id = await db.rawInsert(sql, [manga.nome, manga.descricao, manga.urlAvatar]);
+      int id = await db.rawInsert(sql, [manga.nome, manga.descricao, manga.urlAvatar, manga.categoria.id, manga.autor.id]);
       manga = Manga(
           id: id,
           nome: manga.nome,
@@ -61,7 +61,7 @@ class MangaDAOSQLite implements MangaInterfaceDAO {
     } else {
       sql =
           'UPDATE manga SET nome = ?, descricao =?, url_avatar = ?, categoria_id = ?, autor_id = ? WHERE id = ?';
-      db.rawUpdate(sql, [manga.nome, manga.descricao, manga.urlAvatar, manga.id, manga.categoria.id, manga.autor.id]);
+      db.rawUpdate(sql, [manga.nome, manga.descricao, manga.urlAvatar, manga.categoria.id, manga.autor.id, manga.id]);
     }
     return manga;
   }

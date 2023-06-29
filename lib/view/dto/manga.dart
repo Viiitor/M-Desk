@@ -19,7 +19,7 @@ class Manga{
   });
 
   @override
-  bool operator ==(other) =>
+  bool operator == (other) =>
       other is Manga && other.nome == nome && other.id == id;
 
   @override

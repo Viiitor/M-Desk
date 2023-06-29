@@ -19,6 +19,8 @@ class MangaDetalhe extends StatelessWidget {
           ),
           nome(manga),
           descricao(manga),
+          categoria(manga),
+          autor(manga),
         ],
       ),
       floatingActionButton: botaoVoltar(context),
@@ -47,6 +49,26 @@ class MangaDetalhe extends StatelessWidget {
         title: const Text('Descrição:'),
         subtitle: Text(manga.descricao),
         trailing: painelDescricao(manga),
+      ),
+    );
+  }
+
+  Widget categoria(Manga manga) {
+    final categoria = manga.categoria.nome;
+    return Card(
+      child: ListTile(
+        title: const Text('Categorias'),
+        subtitle: Text('${categoria}'),
+      ),
+    );
+  }
+
+    Widget autor(Manga manga) {
+    final autor = manga.autor.nome;
+    return Card(
+      child: ListTile(
+        title: const Text('Autor'),
+        subtitle: Text('${autor}'),
       ),
     );
   }
