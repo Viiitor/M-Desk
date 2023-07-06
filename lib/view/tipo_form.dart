@@ -1,42 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:mdesk/database/sqlite/dao/autor_dao_sqlite.dart';
-import 'package:mdesk/view/dto/autor.dart';
-import 'package:mdesk/view/interface/autor_interface_dao.dart';
+import 'package:mdesk/database/sqlite/dao/tipo_dao_sqlite.dart';
+import 'package:mdesk/view/dto/tipo.dart';
+import 'package:mdesk/view/interface/tipo_interface_dao.dart';
 import 'package:mdesk/view/widget/botao.dart';
 import 'package:mdesk/view/widget/campo_nome.dart';
-import 'package:mdesk/view/widget/campo_op%C3%A7%C3%B5es_tipo.dart';
 
-
-class AutorForm extends StatefulWidget {
-  const AutorForm({Key? key}) : super(key: key);
+class TipoForm extends StatefulWidget {
+  const TipoForm({Key? key}) : super(key: key);
 
   @override
-  State<AutorForm> createState() => _AutorFormState();
+  State<TipoForm> createState() => _TipoFormState();
 }
 
-class _AutorFormState extends State<AutorForm> {
+class _TipoFormState extends State<TipoForm> {
   final formKey = GlobalKey<FormState>();
   dynamic id;
   final campoNome = CampoNome(controle: TextEditingController());
-
 
   @override
   Widget build(BuildContext context) {
     receberDadosParaAlteracao(context);
     return Scaffold(
-        appBar: AppBar(title: const Text('Autor')),
+        appBar: AppBar(title: const Text('Tipo')),
         body: Form(
             key: formKey,
             child: Column(
               children: [
                 campoNome,
-                campoTipo,
                 criarBotao(context),
               ],
             )));
   }
-
-  final campoTipo = CampoOpcoesTipo();
 
   Widget criarBotao(BuildContext context) {
     return Botao(
@@ -44,9 +38,9 @@ class _AutorFormState extends State<AutorForm> {
       salvar: () {
         var formState = formKey.currentState;
         if (formState != null && formState.validate()) {
-          var autor = preencherDTO();
-          AutorInterfaceDAO dao = AutorDAOSQLite();
-          dao.salvar(autor);
+          var tipo = preencherDTO();
+          TipoInterfaceDAO dao = TipoDAOSQLite();
+          dao.salvar(tipo);
           Navigator.pop(context);
         }
       },
@@ -56,23 +50,20 @@ class _AutorFormState extends State<AutorForm> {
   void receberDadosParaAlteracao(BuildContext context) {
     var parametro = ModalRoute.of(context);
     if (parametro != null && parametro.settings.arguments != null) {
-      Autor autor = parametro.settings.arguments as Autor;
-      id = autor.id;
-      preencherCampos(autor);
+      Tipo tipo = parametro.settings.arguments as Tipo;
+      id = tipo.id;
+      preencherCampos(tipo);
     }
   }
 
-  Autor preencherDTO() {
-    return Autor(
-        id: id,
-        nome: campoNome.controle.text,
-        tipo: campoTipo.opcaoSelecionado!,
+  Tipo preencherDTO() {
+    return Tipo(
+      id: id,
+      nome: campoNome.controle.text,
     );
   }
 
-  void preencherCampos(Autor autor) {
-    campoNome.controle.text = autor.nome;
-    campoTipo.opcaoSelecionado = autor.tipo;
-
+  void preencherCampos(Tipo tipo) {
+    campoNome.controle.text = tipo.nome;
   }
 }

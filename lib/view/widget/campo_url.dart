@@ -13,7 +13,7 @@ class CampoURL extends StatelessWidget{
         return ehVazio(valorDigitado);
       },
       decoration: const InputDecoration(
-        label: Text('URL Manga:'),
+        label: Text('URL da imagem:'),
         hintText: 'URL da Imagem'
       ),
     );

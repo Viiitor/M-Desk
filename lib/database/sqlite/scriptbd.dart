@@ -1,17 +1,29 @@
 //comando para criar tabela
 const criarTabelas = [
+
+  '''
+ CREATE TABLE Tipo(
+    id INTEGER NOT NULL PRIMARY KEY
+    ,nome VARCHAR(200) NOT NULL
+  )
+''',
+
  '''
  CREATE TABLE Categoria(
     id INTEGER NOT NULL PRIMARY KEY
     ,nome VARCHAR(200) NOT NULL
   )
 ''',
+
   '''
  CREATE TABLE Autor(
     id INTEGER NOT NULL PRIMARY KEY
     ,nome VARCHAR(200) NOT NULL
+    ,tipo_id INTEGER NOT NULL
+    ,FOREIGN KEY (tipo_id) REFERENCES tipo (id)
   )
 ''',
+
 
  '''
 CREATE TABLE Manga(
@@ -25,10 +37,32 @@ CREATE TABLE Manga(
     ,FOREIGN KEY (autor_id) REFERENCES autor (id)
   )
 ''',
+  '''
+ CREATE TABLE manga_categoria(
+    manga_id INTEGER NOT NULL 
+    ,categoria_id INTEGER NOT NULL 
+    ,PRIMARY KEY (manga_id,categoria_id) 
+    ,FOREIGN KEY (manga_id) REFERENCES manga (id)
+    ,FOREIGN KEY (categoria_id) REFERENCES categoria (id)
+  )
+''',
+  '''
+ CREATE TABLE manga_autor(
+    manga_id INTEGER NOT NULL 
+    ,autor_id INTEGER NOT NULL 
+    ,PRIMARY KEY (manga_id,autor_id) 
+    ,FOREIGN KEY (manga_id) REFERENCES manga (id)
+    ,FOREIGN KEY (autor_id) REFERENCES autor (id)
+  )
+''',
 
 ];
 
 const insercoes = [
+  '''
+INSERT INTO tipo (nome)
+VALUES ('Manga')
+''',
 '''
 INSERT INTO categoria (nome)
 VALUES ('Ação')
@@ -36,7 +70,8 @@ VALUES ('Ação')
 '''
 INSERT INTO categoria (nome)
 VALUES ('Romance')
-''','''
+''',
+'''
 INSERT INTO categoria (nome)
 VALUES ('Terror')
 ''',
@@ -46,8 +81,8 @@ VALUES ('Comédia')
 ''',
 
 '''
-INSERT INTO autor (nome)
-VALUES ('Masashi Kishimoto')
+INSERT INTO autor (nome, tipo_id)
+VALUES ('Masashi Kishimoto', 1)
 ''',
 
 '''

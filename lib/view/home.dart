@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mdesk/view/autor_lista.dart';
 import 'package:mdesk/view/categoria_lista.dart';
 import 'package:mdesk/view/manga_lista.dart';
+import 'package:mdesk/view/tipo_lista.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -10,7 +11,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       initialIndex: 0,
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(title: const Text('M Desk'), bottom: opcoes()),
         body: const TabBarView(
@@ -18,6 +19,7 @@ class Home extends StatelessWidget {
             MangaLista(),
             CategoriaLista(),
             AutorLista(),
+            TipoLista(),
           ],
         ),
       ),
@@ -30,6 +32,7 @@ class Home extends StatelessWidget {
         Tab(icon: Icon(Icons.import_contacts)),
         Tab(icon: Icon(Icons.space_dashboard)),
         Tab(icon: Icon(Icons.recent_actors)),
+        Tab(icon: Icon(Icons.type_specimen_outlined))
       ],
     );
   }

@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 class CampoNome extends StatelessWidget{
   final qtdeMinimaCaracteres = 2;
-  final mascara = '[A-Za-z\u00C0-\u00FF]';
+  final mascara = '[A-Za-z\u00C0-\u00FF .,]';
   final TextEditingController controle;
   const CampoNome({required this.controle, Key? key}) : super(key: key);
 

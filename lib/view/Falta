@@ -1,25 +1,20 @@
 Associação
-autor            /feito
-autor_interface  /feito
-autor_dao_sqlite /feito
-autor_form       /feito
-autor_lista      /feito
-autor_rota       /feito 
-atualizar Script /feito
+tipo            /
+tipo_interface  /
+tipo_dao_sqlite /
+tipo_form       /
+tipo_lista      /
+tipo_rota       / 
+atualizar Script /
 
-precisa de +1 '????'
+
 ///////////////////////////////////////////////////////////////////
 
-Dropdownbutton 
-fazer ficar salvo a categoria dentro dos detalhes do manga
-fazer o autor ser dentro de detalhes e fazer a Associação com categoria(se der para colocar varias)
-
+Erro na hora de editar o manga
 
 ///////////////////////////////////// ou ////////////////////////////////////
 
-fazer categoria e autor por associação 
-
-
+fazer CRUD de tipo e por associar a autor
 
 ///////////////////////////////////////////////////////////
 

@@ -1,5 +1,7 @@
 import 'package:mdesk/database/sqlite/conexao.dart';
+import 'package:mdesk/database/sqlite/dao/tipo_dao_sqlite.dart';
 import 'package:mdesk/view/dto/autor.dart';
+import 'package:mdesk/view/dto/tipo.dart';
 import 'package:mdesk/view/interface/autor_interface_dao.dart';
 import 'package:sqflite/sqlite_api.dart';
 
@@ -39,23 +41,27 @@ class AutorDAOSQLite implements AutorInterfaceDAO {
     Database db = await Conexao.criar();
     String sql;
     if (autor.id == null) {
-      sql = 'INSERT INTO autor (nome) VALUES (?)';
-      int id = await db.rawInsert(sql, [autor.nome]);
+      sql = 'INSERT INTO autor (nome, tipo_id) VALUES (?,?)';
+      int id = await db.rawInsert(sql, [autor.nome, autor.tipo.id]);
       autor = Autor(
         id: id,
         nome: autor.nome,
+        tipo: autor.tipo,
       );
     } else {
-      sql = 'UPDATE autor SET nome = ? WHERE id = ?';
-      db.rawUpdate(sql, [autor.nome, autor.id]);
+      sql = 'UPDATE autor SET nome = ?, tipo = ?, WHERE id = ?';
+      db.rawUpdate(sql, [autor.nome, autor.id, autor.tipo.id]);
     }
     return autor;
   }
 
-  Autor converterAutor(Map<dynamic, dynamic> resultado) {
+   Future<Autor> converterAutor(Map<dynamic, dynamic> resultado) async {
+    Tipo tipo = await TipoDAOSQLite().consultar(resultado['tipo_id']);
+
     return Autor(
       id: resultado['id'],
       nome: resultado['nome'],
+      tipo: tipo,
     );
   }
 }

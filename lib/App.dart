@@ -9,6 +9,8 @@ import 'package:mdesk/view/manga_detalhe.dart';
 import 'package:mdesk/view/manga_form.dart';
 import 'package:mdesk/view/manga_lista.dart';
 import 'package:mdesk/view/TelaInicial.dart';
+import 'package:mdesk/view/tipo_form.dart';
+import 'package:mdesk/view/tipo_lista.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -25,6 +27,8 @@ class App extends StatelessWidget {
       Rota.categoriaForm:    (context) =>       CategoriaForm(),
       Rota.autorLista:       (context) => const AutorLista(),
       Rota.autorForm:        (context) => const AutorForm(),
+      Rota.tipoLista:        (context) => const TipoLista(),
+      Rota.tipoForm:         (context) => const TipoForm(),
       
     });
   }

@@ -1,14 +1,10 @@
-import 'package:mdesk/view/dto/tipo.dart';
-
-class Autor {
+class Tipo {
   final dynamic id;
   final String nome;
-  final Tipo tipo;
 
-  Autor({
+  Tipo({
     this.id,
-    required this.nome,
-    required this.tipo,
+    required this.nome
     });
 
   @override

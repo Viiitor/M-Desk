@@ -10,4 +10,6 @@ class Rota {
   static const categoriaForm = 'categoria_Form';
   static const autorLista = 'autor_Lista';
   static const autorForm = 'autor_Form';
+  static const tipoLista = 'tipo_Lista';
+  static const tipoForm = 'tipo_Form';
 }
