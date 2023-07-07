@@ -63,6 +63,18 @@ const insercoes = [
 INSERT INTO tipo (nome)
 VALUES ('Manga')
 ''',
+  '''
+INSERT INTO tipo (nome)
+VALUES ('Livro')
+''',
+  '''
+INSERT INTO tipo (nome)
+VALUES ('Historias em Quadrinhos (HQ)')
+''',
+  '''
+INSERT INTO tipo (nome)
+VALUES ('Novel')
+''',
 '''
 INSERT INTO categoria (nome)
 VALUES ('Ação')

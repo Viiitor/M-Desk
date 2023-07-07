@@ -3,9 +3,7 @@ import 'package:mdesk/Rota.dart';
 import 'package:mdesk/database/sqlite/dao/tipo_dao_sqlite.dart';
 import 'package:mdesk/view/dto/tipo.dart';
 import 'package:mdesk/view/interface/tipo_interface_dao.dart';
-import 'package:mdesk/view/widget/barra_navegacao.dart';
-import 'package:mdesk/view/widget/botao_adicionar.dart';
-import 'package:mdesk/view/widget/painel_botoes.dart';
+
 
 class TipoLista extends StatefulWidget {
   const TipoLista({Key? key}) : super(key: key);

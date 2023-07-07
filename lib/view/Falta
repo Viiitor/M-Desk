@@ -10,11 +10,12 @@ atualizar Script /
 
 ///////////////////////////////////////////////////////////////////
 
-Erro na hora de editar o manga
+arrumar o login: validar o login ter uma pessoa e salvar os dados dela ou não salvar perfil
 
-///////////////////////////////////// ou ////////////////////////////////////
 
-fazer CRUD de tipo e por associar a autor
+tratamento de imagem: quando der erro na imagem vir uma generica (if)
+arrumar o design
+
 
 ///////////////////////////////////////////////////////////
 
