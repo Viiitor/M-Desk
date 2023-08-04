@@ -5,7 +5,6 @@ import 'package:mdesk/view/dto/manga.dart';
 import 'package:mdesk/view/interface/manga_interface_dao.dart';
 import 'package:mdesk/view/widget/barra_navegacao.dart';
 import 'package:mdesk/view/widget/botao_adicionar.dart';
-import 'package:mdesk/view/widget/foto_manga.dart';
 import 'package:mdesk/view/widget/painel_botoes.dart';
 
 class MangaLista extends StatefulWidget {
@@ -22,7 +21,9 @@ class _MangaListaState extends State<MangaLista> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: criarLista(context),
-      floatingActionButton: BotaoAdicionar(acao: () => Navigator.pushNamed(context, Rota.mangaForm).then((value) => buscarMangas())),
+      floatingActionButton: BotaoAdicionar(
+          acao: () => Navigator.pushNamed(context, Rota.mangaForm)
+              .then((value) => buscarMangas())),
       bottomNavigationBar: const BarraNavegacao(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
@@ -90,6 +91,24 @@ class ItemLista extends StatelessWidget {
       subtitle: Text(manga.descricao),
       trailing: PainelBotoes(alterar: alterar, excluir: excluir),
       onTap: detalhes,
+    );
+  }
+}
+
+class FotoManga extends StatelessWidget {
+  final Manga manga;
+
+  const FotoManga({required this.manga, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.network(
+      manga.urlAvatar,
+      height: 80,
+      width: 80,
+      errorBuilder: (context, error, stackTrace) {
+        return Icon(Icons.error);
+      },
     );
   }
 }

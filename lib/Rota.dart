@@ -1,4 +1,3 @@
-
 class Rota {
   static const TelaInicial = '/';
   static const home = 'home';
@@ -12,4 +11,5 @@ class Rota {
   static const autorForm = 'autor_Form';
   static const tipoLista = 'tipo_Lista';
   static const tipoForm = 'tipo_Form';
+  static const usuarioForm = 'usuario_form';
 }

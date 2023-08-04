@@ -1,20 +1,25 @@
 //comando para criar tabela
 const criarTabelas = [
-
+  '''
+  CREATE TABLE usuario(
+    id INTEGER NOT NULL PRIMARY KEY
+    ,usuario VARCHAR(200) NOT NULL
+    ,email VARCHAR(150) NOT NULL
+    ,senha VARCAHR(200) NOT NULL
+  )
+  ''',
   '''
  CREATE TABLE Tipo(
     id INTEGER NOT NULL PRIMARY KEY
     ,nome VARCHAR(200) NOT NULL
   )
 ''',
-
- '''
+  '''
  CREATE TABLE Categoria(
     id INTEGER NOT NULL PRIMARY KEY
     ,nome VARCHAR(200) NOT NULL
   )
 ''',
-
   '''
  CREATE TABLE Autor(
     id INTEGER NOT NULL PRIMARY KEY
@@ -23,9 +28,7 @@ const criarTabelas = [
     ,FOREIGN KEY (tipo_id) REFERENCES tipo (id)
   )
 ''',
-
-
- '''
+  '''
 CREATE TABLE Manga(
     id INTEGER NOT NULL PRIMARY KEY
     ,nome VARCHAR(200) NOT NULL
@@ -55,10 +58,13 @@ CREATE TABLE Manga(
     ,FOREIGN KEY (autor_id) REFERENCES autor (id)
   )
 ''',
-
 ];
 
 const insercoes = [
+  '''
+  INSERT INTO usuario (usuario, email, senha)
+  VALUES ('vitor', 'vitor@hotmail.com','vitor')
+''',
   '''
 INSERT INTO tipo (nome)
 VALUES ('Manga')
@@ -75,31 +81,28 @@ VALUES ('Historias em Quadrinhos (HQ)')
 INSERT INTO tipo (nome)
 VALUES ('Novel')
 ''',
-'''
+  '''
 INSERT INTO categoria (nome)
 VALUES ('Ação')
 ''',
-'''
+  '''
 INSERT INTO categoria (nome)
 VALUES ('Romance')
 ''',
-'''
+  '''
 INSERT INTO categoria (nome)
 VALUES ('Terror')
 ''',
-'''
+  '''
 INSERT INTO categoria (nome)
 VALUES ('Comédia')
 ''',
-
-'''
+  '''
 INSERT INTO autor (nome, tipo_id)
 VALUES ('Masashi Kishimoto', 1)
 ''',
-
-'''
+  '''
 INSERT INTO manga (nome, descricao,  url_avatar, categoria_id, autor_id)
 VALUES ('Naruto','Saske','https://cdn.pixabay.com/photo/2018/10/19/05/12/naruto-3757871_640.jpg', 1, 1)
 ''',
-
 ];
