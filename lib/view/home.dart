@@ -13,7 +13,9 @@ class Home extends StatelessWidget {
       initialIndex: 0,
       length: 4,
       child: Scaffold(
-        appBar: AppBar(title: const Text('M Desk'), bottom: opcoes()),
+        appBar: AppBar(title: const Text('M Desk'),
+            backgroundColor: Color.fromARGB(255, 1, 7, 102),
+            bottom: opcoes()),
         body: const TabBarView(
           children: <Widget>[
             MangaLista(),

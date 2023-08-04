@@ -9,6 +9,7 @@ class BotaoAdicionar extends StatelessWidget{
     return FloatingActionButton(
       onPressed: () => acao(),
       tooltip: 'Adicionar Novo',
+      backgroundColor: Color.fromARGB(255, 1, 7, 102),
       child: const Icon(Icons.add),
       );
   }
